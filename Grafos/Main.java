@@ -40,7 +40,7 @@ public class Main {
         System.out.println("Teste concluído com sucesso!");
 
         Menu menu = new Menu();
-        menu.menu();
+        menu.menu(mapa);
 
 
 
