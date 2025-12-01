@@ -38,5 +38,14 @@ public class Main {
         mapa.arvoreMinima();
 
         System.out.println("Teste concluído com sucesso!");
+
+        Menu menu = new Menu();
+        menu.menu();
+
+
+
+
+
+
     }
 }
