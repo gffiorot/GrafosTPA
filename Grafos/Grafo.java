@@ -82,7 +82,7 @@ public class Grafo<T> {
 
     // ================== PARTE 2 ==================
 
-
+    // Algoritmo de Dijkstra
     public void caminhoMaisCurto(T origem, T destino) {
         Vertice<T> vertOrigem = getVertice(origem);
         Vertice<T> vertDestino = getVertice(destino);
@@ -109,9 +109,9 @@ public class Grafo<T> {
             Vertice<T> atual = atualInfo.getVertice();
             float distanciaAtual = atualInfo.getCusto();
 
-            // Se a distância na fila for maior do que a distância já registrada (encontramos um caminho melhor antes), ignore.
+            // Se a distância na fila for maior do que a distância já registrada pra essa cidade (encontramos um caminho melhor antes), ignore.
             if (distanciaAtual > distancias.get(atual)) {
-                continue;
+                continue; // Continue pula pra proxima instancia do loop
             }
 
             // Chegou ao destino
@@ -119,6 +119,7 @@ public class Grafo<T> {
                 break;
             }
 
+            // em cada cidade verifica as rodovias
             for (Aresta aresta : atual.getDestinos()) {
                 Vertice<T> vizinho = aresta.getDestino();
                 float pesoAresta = aresta.getPeso();
@@ -146,6 +147,7 @@ public class Grafo<T> {
                 passo = pais.get(passo);
             }
 
+            // Collections só ta aqui para inverter a ordem, que vem ao contrario por casa do hashMap pais
             Collections.reverse(caminho);
 
             System.out.printf("A rota mais curta de "+origem+ " para "+destino+" é:\n");

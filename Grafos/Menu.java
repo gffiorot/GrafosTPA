@@ -4,20 +4,22 @@ import java.util.Scanner;
 public class Menu {
 
     Scanner input = new Scanner(System.in);
-    void menu( Grafo<String> mapa) {
+    void menu(Grafo<String> mapa) {
 
         int opcao;
         boolean roda = true;
         while (roda) {
             String msg = "*********************\n" +
                     "Escolha uma opção\n" +
-                    "1) adicionar cidade ao mapa\n" +
+                    "1) Adicionar cidade ao mapa\n" +
                     "2) Adicionar caminho entre cidades\n" +
-                    "3) caminho mínimo (Dijkstra)\n"+
-                    "4) árvore geradora mínima (Prim)\n"+
+                    "3) Rota mais curta para a cidade (Dijkstra)\n"+
+                    "4) Infraestrutura minima de conectar as cidades (Prim)\n"+
                     "0) Sair";
+
             System.out.println(msg);
             opcao = lerInt();
+
             switch (opcao){
                 case 1:{
                     System.out.println("Insira cidade que voce quer adicionar");
@@ -32,7 +34,7 @@ public class Menu {
                     origem = this.lerLinha();
                     System.out.println("Insira a cidade de destino (caso ele nao exista, ele sera adicionado)");
                     destino = this.lerLinha();
-                    System.out.println("Insira o Peso do caminho entre as cidades");
+                    System.out.println("Insira a distância do caminho entre as cidades");
                     peso = Float.parseFloat(lerLinha());
                     mapa.addAresta(origem,destino,peso);
                     break;
@@ -56,7 +58,7 @@ public class Menu {
             }
         }
     }
-    private  int lerInt() {
+    private int lerInt() {
         String linha = lerLinha();
 
         return Integer.parseInt(linha);
