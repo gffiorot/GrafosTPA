@@ -1,18 +1,18 @@
 package Grafos;
-import java.util.Comparator;
+
 import java.util.Scanner;
 public class Menu {
-    Grafo<String> mapa = new Grafo<>();
+
     Scanner input = new Scanner(System.in);
-    void menu() {
+    void menu( Grafo<String> mapa) {
 
         int opcao;
         boolean roda = true;
         while (roda) {
             String msg = "*********************\n" +
                     "Escolha uma opção\n" +
-                    "1) adicionar Vertice\n" +
-                    "2) Adicionar Aresta\n" +
+                    "1) adicionar cidade ao mapa\n" +
+                    "2) Adicionar caminho entre cidades\n" +
                     "3) caminho mínimo (Dijkstra)\n"+
                     "4) árvore geradora mínima (Prim)\n"+
                     "0) Sair";
@@ -20,7 +20,7 @@ public class Menu {
             opcao = lerInt();
             switch (opcao){
                 case 1:{
-                    System.out.println("Insira o Vertice que voce quer adicionar");
+                    System.out.println("Insira cidade que voce quer adicionar");
                     String valor = this.lerLinha();
                     mapa.addVertice(valor);
                     break;
@@ -28,20 +28,20 @@ public class Menu {
                 case 2:{
                     String origem, destino ;
                     float peso;
-                    System.out.println("Insira o Vertice de origem(caso ele nao exista, ele sera adicionado)");
+                    System.out.println("Insira a cidade de origem(caso ela nao exista, ele sera adicionado)");
                     origem = this.lerLinha();
-                    System.out.println("Insira o Vertice de destino (caso ele nao exista, ele sera adicionado)");
+                    System.out.println("Insira a cidade de destino (caso ele nao exista, ele sera adicionado)");
                     destino = this.lerLinha();
-                    System.out.println("Insira o Peso da aresta");
+                    System.out.println("Insira o Peso do caminho entre as cidades");
                     peso = Float.parseFloat(lerLinha());
                     mapa.addAresta(origem,destino,peso);
                     break;
                 }
                 case 3:{
                     String origem, destino ;
-                    System.out.println("Insira o Vertice de origem");
+                    System.out.println("Insira a cidade de origem");
                     origem = this.lerLinha();
-                    System.out.println("Insira o Vertice de destino");
+                    System.out.println("Insira a cidade de destino");
                     destino = this.lerLinha();
                     mapa.caminhoMaisCurto(origem, destino);
                     break;
